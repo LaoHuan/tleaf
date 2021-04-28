@@ -1,0 +1,25 @@
+[package]
+name = "leaf-bin"
+version = "0.2.7"
+authors = ["eycorsican <eric.y.corsican@gmail.com>"]
+edition = "2018"
+
+[[bin]]
+name = "leaf"
+path = "src/main.rs"
+
+[features]
+default = [
+    "leaf/all-configs",
+    "leaf/all-endpoints",
+    "leaf/ring-aead",
+    "leaf/rustls-tls",
+]
+
+[dependencies]
+leaf = { path = "../leaf", default-features = false, optional = true }
+clap = { version = "3.0.0-beta.1", default-features = false, features =["std"] }
+log = { version = "0.4", features = ["std"] }
+fern = { version = "0.5", features = ["colored"] }
+tokio = { version = "0.2", features = ["signal"] }
+futures = "0.3"
